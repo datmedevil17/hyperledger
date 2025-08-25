@@ -1,4 +1,4 @@
-# configtx.yaml
+# configtx.yaml - Updated with actual IP addresses
 Organizations:
   - &OrdererOrg
     Name: OrdererOrg
@@ -15,7 +15,7 @@ Organizations:
         Type: Signature
         Rule: "OR('OrdererMSP.admin')"
     OrdererEndpoints:
-      - orderer.example.com:7050
+      - 172.70.105.199:7050
 
   - &Org1
     Name: Org1MSP
@@ -35,7 +35,7 @@ Organizations:
         Type: Signature
         Rule: "OR('Org1MSP.peer')"
     AnchorPeers:
-      - Host: peer0.org1.example.com
+      - Host: 172.70.102.183
         Port: 7051
 
   - &Org2
@@ -56,8 +56,8 @@ Organizations:
         Type: Signature
         Rule: "OR('Org2MSP.peer')"
     AnchorPeers:
-      - Host: peer0.org2.example.com
-        Port: 7051
+      - Host: 172.70.102.210
+        Port: 8051
 
 Capabilities:
   Channel: &ChannelCapabilities
@@ -91,10 +91,10 @@ Application: &ApplicationDefaults
 Orderer: &OrdererDefaults
   OrdererType: etcdraft
   Addresses:
-    - orderer.example.com:7050
+    - 172.70.105.199:7050
   EtcdRaft:
     Consenters:
-    - Host: orderer.example.com
+    - Host: 172.70.105.199
       Port: 7050
       ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
       ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
