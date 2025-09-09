@@ -15,7 +15,7 @@ services:
       - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
       - ORDERER_GENERAL_LISTENPORT=7050
       - ORDERER_GENERAL_GENESISMETHOD=file
-      - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+      - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/channel-artifacts/genesis.block
       - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
       - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
       - ORDERER_OPERATIONS_LISTENADDRESS=0.0.0.0:17050
@@ -29,7 +29,7 @@ services:
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric
     command: orderer
     volumes:
-      - ./channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+      - ./channel-artifacts:/var/hyperledger/orderer/channel-artifacts
       - ./crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp:/var/hyperledger/orderer/msp
       - ./crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/:/var/hyperledger/orderer/tls
     ports:
@@ -65,7 +65,8 @@ services:
       - ./chaincode:/opt/gopath/src/github.com/chaincode
     extra_hosts:
       - "peer0.org1.example.com:172.70.102.183"
-      - "peer0.org2.example.com:172.70.102.210"
+      - "peer0.org2.example.com:172.70.96.96"
+      - "peer0.org3.example.com:172.70.101.19"
       - "orderer.example.com:172.70.105.199"
     networks:
       - test

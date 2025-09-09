@@ -1,0 +1,27 @@
+# crypto-config.yaml
+OrdererOrgs:
+  - Name: Orderer
+    Domain: example.com
+    Specs:
+      - Hostname: orderer
+        CommonName: orderer.example.com
+
+PeerOrgs:
+  - Name: Org1MSP
+    Domain: org1.example.com
+    Template:
+      Count: 1
+    Users:
+      Count: 1
+  - Name: Org2MSP
+    Domain: org2.example.com
+    Template:
+      Count: 1
+    Users:
+      Count: 1
+  - Name: Org3MSP
+    Domain: org3.example.com
+    Template:
+      Count: 1
+    Users:
+      Count: 1
